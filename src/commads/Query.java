@@ -37,6 +37,6 @@ public class Query implements IQuery{
 
     @Override
     public void selectAllStudentsFromGroup() throws SQLException {
-        iDbExecutor.execute(String.format(""),true);
+        iDbExecutor.execute(String.format("select Id, FIO from %1$s where IdGroup = (select Id from %2$s where name like('Alfa'));",StudentTable.TABLE_NAME,GroupTable.TABLE_NAME),true);
     }
 }
