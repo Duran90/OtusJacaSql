@@ -13,7 +13,6 @@ public class PropertiesReader implements IResource {
     public Map<String, String> read() {
         String rootFolder = System.getProperty("user.dir");
         Map<String, String> props = new HashMap<>();
-        System.out.printf("%s/src/resources/%s%n", rootFolder, "db.properties");
             try (InputStream input = new FileInputStream(String.format("%s/src/resources/%s", rootFolder, "db.properties"))) {
                 Properties prop = new Properties();
                 prop.load(input);

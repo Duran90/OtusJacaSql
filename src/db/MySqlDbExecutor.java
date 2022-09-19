@@ -17,7 +17,6 @@ public class MySqlDbExecutor implements IDbExecutor {
         Map<Integer, String> result = new HashMap<>();
 
         Map<String, String> props = resource.read();
-        System.out.println(props.get("url"));
         String url = String.format("%s/%s", props.get("url"), props.get("db_name"));
 
 //        Connection connection = null;

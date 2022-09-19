@@ -1,3 +1,4 @@
+import commads.Query;
 import db.IDbExecutor;
 import db.MySqlDbExecutor;
 import tables.AbsTable;
@@ -14,6 +15,7 @@ public class Main {
         AbsTable students = new StudentTable();
         AbsTable curator = new CuratorTable();
         AbsTable group = new GroupTable();
+        Query query = new Query(iDbExecutor);
         try {
             dropTableIfExist(iDbExecutor, List.of(students, curator, group));
             students.create();
@@ -22,6 +24,14 @@ public class Main {
             curator.insert();
             group.create();
             group.insert();
+            query.selectAllInfo();
+            query.selectStudentsCount();
+            query.selectAllFemaleStudents();
+            query.selectAllGroupsAngCurator();
+            query.updateGroupCurator();
+            query.selectAllGroupsAngCurator();
+            query.selectAllStudentsFromGroup();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
